@@ -11,8 +11,10 @@
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
-    <link rel="stylesheet"
-  href="https://fonts.googleapis.com/css?family=Manrope:500,700">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Manrope:500,700"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Frontend Mentor | Article preview component</title>
 
@@ -51,19 +53,21 @@
               <p class="article-author">Michelle Appleton</p>
               <p class="article-date">28 Jun 2020</p>
             </div>
-            <div class="share">
-                <img src="images/icon-share.svg" class="share-icon"></img>
+            <div id="button" aria-describedby="tooltip" class="share">
+              <img src="images/icon-share.svg" class="share-icon" />
             </div>
           </div>
         </div>
       </div>
-      <div class="test visible">
-          <p>S H A R E</p>
-          <img src="images/icon-facebook.svg">
-          <img src="images/icon-twitter.svg">
-          <img src="images/icon-pinterest.svg">
+      <div id="tooltip" role="tooltip">
+        <p>S H A R E</p>
+        <img src="images/icon-facebook.svg" />
+        <img src="images/icon-twitter.svg" />
+        <img src="images/icon-pinterest.svg" />
+        <div id="arrow" data-popper-arrow></div>
       </div>
     </div>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="index.js"></script>
   </body>
 </html>

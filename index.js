@@ -1,25 +1,40 @@
-const shareBtn = document.querySelector(".share");
+const button = document.querySelector("#button");
 
-const test = document.querySelector(".test");
+const tooltip = document.querySelector("#tooltip");
 
-document.addEventListener("DOMContentLoaded", () => {
-  let isShown = true;
+Popper.createPopper(button, tooltip, {
+  placement: "top",
+  modifiers: [
+    {
+      name: "preventOverflow",
+      options: {
+        mainAxis: false, // true by default
+      },
+    },
+    {
+      name: "offset",
+      options: {
+        offset: [0, 16],
+      },
+    },
+  ],
+});
 
-  shareBtn.addEventListener("click", () => {
-    const rect = shareBtn.getBoundingClientRect();
-    console.log({
-      left: rect.left + window.scrollX,
-      top: rect.top + window.scrollY,
-    });
+function show() {
+  tooltip.setAttribute("data-show", "");
+}
 
-    if (isShown) {
-      test.classList.remove("visible");
-      test.classList.add("hidden");
-      isShown = false;
-    } else {
-      test.classList.remove("hidden");
-      test.classList.add("visible");
-      isShown = true;
-    }
-  });
+function hide() {
+  tooltip.removeAttribute("data-show");
+}
+
+const showEvents = ["mouseenter", "focus"];
+const hideEvents = ["mouseleave", "blur"];
+
+showEvents.forEach((event) => {
+  button.addEventListener(event, show);
+});
+
+hideEvents.forEach((event) => {
+  button.addEventListener(event, hide);
 });

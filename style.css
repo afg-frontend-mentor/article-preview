@@ -114,6 +114,62 @@ body {
   height: calc(13 * 1.5);
 }
 
+#tooltip {
+  background: var(--very-dark-grayish-blue);
+  color: var(--desaturated-dark-blue);
+  padding: 0.75rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  visibility: hidden;
+}
+
+#tooltip[data-show] {
+  visibility: visible;
+}
+
+#tooltip img {
+  margin-left: 0.75rem;
+  width: 16px;
+  height: 16px;
+}
+
+#tooltip p {
+  margin-right: 0.75rem;
+  letter-spacing: 0.1rem;
+}
+
+#arrow,
+#arrow::before {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  z-index: -1;
+}
+
+#arrow::before {
+  content: "";
+  transform: rotate(45deg);
+  background: var(--very-dark-grayish-blue);
+}
+
+#tooltip[data-popper-placement^="top"] > #arrow {
+  bottom: -8px;
+}
+
+#tooltip[data-popper-placement^="bottom"] > #arrow {
+  top: -8px;
+}
+
+#tooltip[data-popper-placement^="left"] > #arrow {
+  right: -8px;
+}
+
+#tooltip[data-popper-placement^="right"] > #arrow {
+  left: -8px;
+}
+
 @media screen and (max-width: 700px) {
   .card {
     width: 320px;
@@ -132,26 +188,4 @@ body {
     font-size: 1rem;
     line-height: 1.4rem;
   }
-}
-
-.hidden {
-  visibility: hidden;
-}
-
-.visible {
-  visibility: visible;
-}
-
-.test {
-  margin-top: 2rem;
-  display: flex;
-  padding: 0.5rem 1.5rem;
-  justify-content: space-around;
-  background: var(--very-dark-grayish-blue);
-  color: var(--light-grayish-blue);
-}
-
-.test p,
-.test img {
-  margin: 0.5rem;
 }
